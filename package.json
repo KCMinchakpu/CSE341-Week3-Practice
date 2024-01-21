@@ -1,0 +1,33 @@
+{
+  "name": "cse341-week3-practice",
+  "version": "1.0.0",
+  "description": "This repository contains the files and codes for my CSE341 Week 3 Individual Practice and Team Activity.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+
+  },
+  "keywords": [],
+  "author": "Kevin Cross Minchakpu",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.2",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "swagger-ui-express": "^5.0.0",
+    "validatorjs": "^3.22.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.4",
+    "swagger-autogen": "^2.23.7"
+  }
+}
