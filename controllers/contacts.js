@@ -8,29 +8,32 @@ const getAllData = async (req, res) => {
             .db()
             .collection('contacts')
             .find();
-        result.toArray().then((contacts) => {
+        result.toArray((err, lists) => {
             if (err) {
                 res.status(400).json({ message: err });
               }
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).json(contacts);
+            res.status(200).json(lists);
         });
     };
 
 //Read (GET) one contact (based on Id) in the database
-const getSingleData = async (req, res) => { 
-         const contactId = new ObjectId(req.params.id);
+const getSingleData = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid contact id to find a contact.');
+      }
+        const contactId = new ObjectId(req.params.id);
         const result = await mongodb            
             .getDatabase()
             .db()
             .collection('contacts')
             .find({ _id: contactId});
-        result.toArray().then((contacts) => {
+        result.toArray((err, result) => {
             if (err) {
                 res.status(400).json({ message: err });
               }
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).json(contacts[0]);
+            res.status(200).json(result[0]);
         });
     };
 
