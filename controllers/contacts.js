@@ -61,6 +61,9 @@ const createContact = async (req, res, next) => {
     };
 //Update (PUT) an old contact
 const updateContact = async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid contact id to update a contact.');
+      }
         const UserId = new ObjectId(req.params.id);
         const updatedInfo = {
             firstName: req.body.firstName,
@@ -84,6 +87,9 @@ const updateContact = async (req, res, next) => {
 
 //Delete (DELETE) a contact
 const deleteContact = async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid contact id to delete a contact.');
+      }
         const UserId = new ObjectId(req.params.id);
         const resultBack = await mongodb
             .getDatabase()
