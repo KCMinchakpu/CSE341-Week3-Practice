@@ -9,6 +9,9 @@ const getAllData = async (req, res) => {
             .collection('contacts')
             .find();
         result.toArray().then((contacts) => {
+            if (err) {
+                res.status(400).json({ message: err });
+              }
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(contacts);
         });
@@ -23,6 +26,9 @@ const getSingleData = async (req, res) => {
             .collection('contacts')
             .find({ _id: contactId});
         result.toArray().then((contacts) => {
+            if (err) {
+                res.status(400).json({ message: err });
+              }
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(contacts[0]);
         });
